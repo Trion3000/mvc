@@ -20,6 +20,11 @@ abstract class Router
         self::$map = require(CONF_DIR . $routesFile);
     }
 
+    private static function isAdminUri($uri)
+    {
+        return strpos($uri, '/admin') === 0;
+    }
+
 
     /**
      * @param Request $request
@@ -28,6 +33,10 @@ abstract class Router
     public static function match(Request $request)
     {
         $uri = $request->getURI();
+
+        if (self::isAdminUri($uri)) {
+            Controller::setAdminLayout();
+        }
 
         // перебор элементов массива из routes.php
         foreach (self::$map as $route) {

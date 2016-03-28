@@ -2,6 +2,14 @@
 
 abstract class Controller
 {
+
+    private static $layout = 'default_layout.phtml';
+
+    public static function setAdminLayout()
+    {
+        self::$layout = 'admin_layout.phtml';
+    }
+
     protected function render($viewName, array $args = array())
     {
         extract($args);
@@ -17,7 +25,7 @@ abstract class Controller
         $content = ob_get_clean();
 
         ob_start();
-        require VIEW_DIR . 'default_layout.phtml';
+        require VIEW_DIR . self::$layout;
         return ob_get_clean();
     }
 
@@ -28,7 +36,7 @@ abstract class Controller
         $content = ob_get_clean();
 
         ob_start();
-        require VIEW_DIR . 'default_layout.phtml';
+        require VIEW_DIR . self::$layout;
         return ob_get_clean();
     }
 }

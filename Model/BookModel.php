@@ -22,10 +22,17 @@ class BookModel
     }
 
 
-    public function findAll()
+    public function findAll($status = true)
     {
+        $sql = "SELECT * FROM book";
+        if ($status) {
+            $sql .= ' WHERE status = 1';
+        }
+
+        $sql .= ' ORDER BY price';
+
         $db = DbConnection::getInstance()->getPdo();
-        $sth = $db->query('SELECT * FROM book WHERE status = 1 ORDER BY price');
+        $sth = $db->query($sql);
         $sth->execute();
 
         $data = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -56,6 +63,16 @@ class BookModel
         $sth->execute($ids);
 
         return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function save(array $book)
+    {
+        // TODO: проверить, чтобы в массиве $message были ключи как поля в таблице. Иначе - исключение
+        // TODO: использовать этот же метод для добавления книг. Проверка на is_null(id) => формируем соответсвующую строку с запросом
+
+        $db = DbConnection::getInstance()->getPdo();
+        $sth = $db->prepare('UPDATE book SET title = :title, description = :description, price = :price, status = :status where id = :id');
+        $sth->execute($book);
     }
 }
 

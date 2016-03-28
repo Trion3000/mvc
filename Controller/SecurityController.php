@@ -8,6 +8,35 @@
  */
 class SecurityController extends Controller
 {
+    public function registerAction(Request $request)
+    {
+        $form = new RegistrationForm($request);
+
+        if ($request->isPost()) {
+            if ($form->isValid()) {
+
+                // TODO: проверять, существует ли в базе уже юзер с таким имейлом
+                // $model = new UserModel();
+                // $model->check()
+
+                (new UserModel())->save(array(
+                    'email' => $form->email,
+                    'password' => new Password($form->password)
+                ));
+
+                Session::setFlash('Registered');
+                Router::redirect('/login');
+            }
+
+            Session::setFlash($form->getNotice());
+        }
+
+        $args = compact('form');
+        return $this->render('register', $args);
+    }
+
+
+
     public function loginAction(Request $request)
     {
         $form = new LoginForm($request);

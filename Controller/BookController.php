@@ -35,12 +35,17 @@ class BookController extends Controller
      * @return string
      * @throws NotFoundException
      */
-    public function apiAction(Request $request)
+    public function apiBooksListAction(Request $request)
     {
         $model = new BookModel();
         $books = $model->findAll();
 
         return json_encode($books);
+    }
+
+    public function apiBookShowAction(Request $request)
+    {
+        // TODO
     }
 
 
