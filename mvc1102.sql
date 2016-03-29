@@ -344,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 --
 
 INSERT INTO `feedback` (`id`, `username`, `email`, `message`, `created`, `ip`) VALUES
-(1, 'jessiee', 'jessie@bb.com', 'beach!', '2016-03-15 20:37:26', '127.0.0.1')
+(1, 'jessiee', 'jessie@bb.com', 'beach!', '2016-03-15 20:37:26', '127.0.0.1');
 
 -- --------------------------------------------------------
 
