@@ -7,6 +7,8 @@ define('CONTROLLER_DIR', ROOT . 'Controller' . DS);
 define('MODEL_DIR', ROOT . 'Model' . DS);
 define('DATA_DIR', ROOT . '_data' . DS);
 define('CONF_DIR', ROOT . 'Config' . DS);
+define('UPLOAD_DIR', ROOT . 'webroot' . DS . 'uploads' . DS);
+
 
 
 /**

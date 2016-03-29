@@ -19,6 +19,7 @@ return  array(
     // admin
     'admin_books_list' => new Route('/admin/books', 'AdminBook', 'index'),
     'admin_books_edit' => new Route('/admin/books/edit/{id}', 'AdminBook', 'edit', array('id' => '[0-9]+')),
+    'admin_document_add' => new Route('/admin/docs/add', 'AdminDocument', 'add'),
 
    // 'devionity_style' => new Route('/{_controller}/{_action}/{id}')
 );

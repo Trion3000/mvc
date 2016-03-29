@@ -5,6 +5,7 @@ class Request
     private $get;
     private $post;
     private $server;
+    private $files;
 
     /**
      * Request constructor.
@@ -14,6 +15,7 @@ class Request
         $this->get = $_GET;
         $this->post = $_POST;
         $this->server = $_SERVER;
+        $this->files = $_FILES;
     }
 
     /**
@@ -21,7 +23,7 @@ class Request
      */
     public function isPost()
     {
-        return (bool)$_POST;
+        return strtolower($this->server('REQUEST_METHOD')) == 'post';
     }
 
     /**
@@ -58,6 +60,15 @@ class Request
     {
         if (isset($this->server[$key])) {
             return $this->server[$key];
+        }
+
+        return null;
+    }
+
+    public function files($key)
+    {
+        if (isset($this->files[$key])) {
+            return $this->files[$key];
         }
 
         return null;
