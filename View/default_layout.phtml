@@ -3,34 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title><?=\Library\MetaHelper::getTitle();?></title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<a href="/">Home</a>
-<a href="/books">Books</a>
-<a href="/contact-us">Contact</a>
-<a href="/cart">Cart</a>
-<?php if (\Library\Session::has('user')) : ?>
-    <a href="/logout">Logout</a>
-<?php else : ?>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
-<?php endif;?>
-<hr>
+<div class="container">
+    <div class="menu">
+        <div class="test-block">
+            <a href="/">Home</a>
+            <a href="/books">Books</a>
+            <a href="/contact-us">Contact</a>
+            <a href="/cart">Cart</a>
+            <?php if (\Library\Session::has('user')) : ?>
+                <a href="/logout">Logout</a>
+            <?php else : ?>
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            <?php endif;?>
+        </div>
+    </div>
 
+    <div class="content">
+        <?=$content ?>
+    </div>
+    <br>    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-<?=$content ?>
+    <div class="footer">
+        All rights reserved &copy; 1980 - <?=date('Y')?>
+    </div>
+</div>
 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<hr>
-All rights reserved &copy; 1980 - <?=date('Y')?>
 </body>
 </html>

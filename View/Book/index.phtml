@@ -1,8 +1,13 @@
 <h1>Books</h1>
 
-<?php foreach ($books as $book) : ?>
-   Title:  <?=$book['title']?><br>
-   Price:  <?=$book['price']?><br>
-    <a href="/book-<?=$book['id']?>.html">Details</a>
-    <hr>
-<?php endforeach; ?>
+<div class="books">
+    <?php foreach ($books as $book) : ?>
+        <div class="book-item">
+            Title:  <?=$book['title']?><br>
+            Price:  <?=$book['price']?><br>
+            <a href="/book-<?=$book['id']?>.html">Details</a>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
