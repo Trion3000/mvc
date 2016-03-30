@@ -1,11 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: henry
- * Date: 03.01.16
- * Time: 21:49
- */
 
+namespace Library;
 
 
 class Route

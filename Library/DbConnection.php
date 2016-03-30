@@ -1,5 +1,8 @@
 <?php
 
+namespace Library;
+
+
 /**
  * Singleton Pattern
  */
@@ -8,7 +11,7 @@ class DbConnection
     private static $instance = null;
 
     /**
-     * @var PDO
+     * @var \PDO
      */
     private $pdo;
 
@@ -16,8 +19,8 @@ class DbConnection
     {
         $dsn = 'mysql: host=' . Config::get('host') . '; dbname='. Config::get('dbname'); // like:  mysql: host=localhost; dbnam=mvc1102
 
-        $this->pdo = new PDO($dsn, Config::get('user'), Config::get('pass'));
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->pdo = new \PDO($dsn, Config::get('user'), Config::get('pass'));
+        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->pdo->exec('SET NAMES utf8');
     }
 
@@ -35,7 +38,7 @@ class DbConnection
 
 
     /**
-     * @return PDO
+     * @return \PDO
      */
     public function getPdo()
     {

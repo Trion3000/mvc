@@ -1,11 +1,10 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PHP acedemy
- * Date: 17.03.2016
- * Time: 20:55
- */
+namespace Model;
+
+
+use Library\DbConnection;
+
 class FeedbackModel
 {
     public function save(array $message)

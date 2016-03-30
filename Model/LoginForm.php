@@ -1,11 +1,9 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PHP acedemy
- * Date: 01.03.2016
- * Time: 20:33
- */
+namespace Model;
+
+use Library\Request;
+
 class LoginForm
 {
     public $email;

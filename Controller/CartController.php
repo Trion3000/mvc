@@ -1,11 +1,14 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: henry
- * Date: 23.03.16
- * Time: 15:57
- */
+namespace Controller;
+
+
+use Library\Controller;
+use Library\Request;
+use Library\Router;
+use Model\BookModel;
+use Model\Cart;
+
 class CartController extends Controller
 {
     public function addAction(Request $request)

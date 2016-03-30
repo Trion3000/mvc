@@ -1,7 +1,9 @@
 <?php
 
+namespace Library;
 
-class NotFoundException extends Exception
+
+class NotFoundException extends \Exception
 {
 
     /**

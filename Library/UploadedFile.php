@@ -1,5 +1,7 @@
 <?php
 
+namespace Library;
+
 class UploadedFile
 {
     public $name;
@@ -37,7 +39,7 @@ class UploadedFile
         $res = move_uploaded_file($this->tmpName, $to);
 
         if (!$res) {
-            throw new Exception('File copy failed', 500);
+            throw new \Exception('File copy failed', 500);
         }
     }
 

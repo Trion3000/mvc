@@ -1,5 +1,8 @@
 <?php
 
+namespace Model;
+
+
 class PageModel
 {
     public function findByAlias($alias)

@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?=MetaHelper::getTitle();?></title>
+    <title><?=\Library\MetaHelper::getTitle();?></title>
 </head>
 <body>
 <a href="/">Home</a>
 <a href="/books">Books</a>
 <a href="/contact-us">Contact</a>
 <a href="/cart">Cart</a>
-<?php if (Session::has('user')) : ?>
+<?php if (\Library\Session::has('user')) : ?>
     <a href="/logout">Logout</a>
 <?php else : ?>
     <a href="/login">Login</a>

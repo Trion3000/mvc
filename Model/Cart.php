@@ -1,7 +1,9 @@
 <?php
-/**
- * Class Cart
- */
+
+namespace Model;
+
+
+use Library\Cookie;
 
 class Cart
 {

@@ -1,5 +1,8 @@
 <?php
 
+namespace Library;
+
+
 class Password
 {
     const SALT_TEXT = 'Yes, Mr White! Yes, science!';

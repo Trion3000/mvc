@@ -1,5 +1,8 @@
 <?php
 
+namespace Library;
+
+
 
 abstract class Cookie
 {

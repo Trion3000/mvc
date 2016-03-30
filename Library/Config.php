@@ -1,5 +1,7 @@
 <?php
 
+namespace Library;
+
 /**
  * registry
  */

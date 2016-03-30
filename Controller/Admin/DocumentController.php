@@ -1,6 +1,11 @@
 <?php
 
-class AdminDocumentController extends Controller
+namespace Controller\Admin;
+
+use Library\Controller;
+use Library\Request;
+
+class DocumentController extends Controller
 {
     /**
      * @param Request $request

@@ -1,5 +1,10 @@
 <?php
 
+namespace Model;
+
+
+use Library\Request;
+
 class RegistrationForm
 {
     const PASS_FAIL = 'Passwords don\'t match';

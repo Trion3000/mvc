@@ -1,5 +1,9 @@
 <?php
+namespace Model;
 
+
+use Library\DbConnection;
+use Library\NotFoundException;
 
 class BookModel
 {
@@ -12,7 +16,7 @@ class BookModel
         );
         $sth->execute($params);
 
-        $book = $sth->fetch(PDO::FETCH_ASSOC);
+        $book = $sth->fetch(\PDO::FETCH_ASSOC);
 
         if (!$book) {
             throw new NotFoundException("book #{$id} not found");
@@ -35,7 +39,7 @@ class BookModel
         $sth = $db->query($sql);
         $sth->execute();
 
-        $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $data = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
         if (!$data) {
             throw new NotFoundException('Books not found');
@@ -62,7 +66,7 @@ class BookModel
         $sth = $db->prepare("SELECT * FROM book WHERE status = 1 AND id IN ({$params}) ORDER BY price");
         $sth->execute($ids);
 
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function save(array $book)

@@ -1,11 +1,8 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PHP acedemy
- * Date: 01.03.2016
- * Time: 20:52
- */
+namespace Library;
+
+
 abstract class Router
 {
     private static $map;
@@ -28,7 +25,7 @@ abstract class Router
 
     /**
      * @param Request $request
-     * @throws Exception
+     * @throws \Exception
      */
     public static function match(Request $request)
     {
@@ -57,7 +54,7 @@ abstract class Router
                     $request->mergeGet($matches);
                 }
 
-                self::$controller = $route->controller . 'Controller';
+                self::$controller = 'Controller\\' . $route->controller . 'Controller';
                 self::$action = $route->action . 'Action';
 
                 break;
@@ -65,7 +62,7 @@ abstract class Router
         }
 
         if (is_null(self::$controller) || is_null(self::$action)) {
-            throw new Exception('Route not found: ' . $uri, 404);
+            throw new \Exception('Route not found: ' . $uri, 404);
         }
     }
 

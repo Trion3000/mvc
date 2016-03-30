@@ -1,5 +1,8 @@
 <?php
 
+namespace Library;
+
+
 abstract class Controller
 {
 
@@ -14,10 +17,13 @@ abstract class Controller
     {
         extract($args);
         $tplDir = str_replace('Controller', '', get_class($this)); // Index
+        $tplDir = trim($tplDir, '\\');
+        $tplDir = str_replace('\\', DS, $tplDir);
+
         $file = VIEW_DIR . $tplDir . DS . $viewName . '.phtml';
 
         if (!file_exists($file)) {
-            throw new Exception("{$file} not found", 404);
+            throw new \Exception("{$file} not found", 404);
         }
 
         ob_start();

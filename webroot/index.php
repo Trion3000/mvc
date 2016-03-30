@@ -1,4 +1,5 @@
 <?php
+
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', __DIR__ . DS . '..' . DS);
 define('VIEW_DIR', ROOT . 'View' . DS);
@@ -17,30 +18,25 @@ define('UPLOAD_DIR', ROOT . 'webroot' . DS . 'uploads' . DS);
  */
 function __autoload($className)
 {
-    $file = "{$className}.php";
+    $file = ROOT . str_replace('\\', DS, "{$className}.php");
 
-    if (file_exists(LIB_DIR . $file)) {
-        require LIB_DIR . $file;
-    } elseif (file_exists(CONTROLLER_DIR . $file)) {
-        require CONTROLLER_DIR . $file;
-    } elseif (file_exists(MODEL_DIR . $file)) {
-        require MODEL_DIR . $file;
-    } else {
-        throw new Exception("{$file} not found", 404);
+    if (!file_exists($file)) {
+        throw new \Exception("{$file} not found", 404);
     }
+
+    require_once $file;
 }
 
 try {
-    Session::start();
-    Config::setFromXML('db.xml');
-    Router::init('routes.php');
+    \Library\Session::start();
+    \Library\Config::setFromXML('db.xml');
+    \Library\Router::init('routes.php');
 
-    $request = new Request();
-    Router::match($request);
+    $request = new \Library\Request();
+    \Library\Router::match($request);
 
-    $controller = Router::$controller;
-    $action = Router::$action;
-
+    $controller = \Library\Router::$controller;
+    $action = \Library\Router::$action;
     $controller = new $controller();
 
     if (!method_exists($controller, $action)) {
@@ -48,10 +44,10 @@ try {
     }
 
     $content = $controller->$action($request);
-} catch(NotFoundException $e) {
-    $content = Controller::renderError($e->getCode(), $e->getMessage());
-} catch(Exception $e) {
-    $content = Controller::renderError($e->getCode(), $e->getMessage());
+} catch(\Library\NotFoundException $e) {
+    $content = \Library\Controller::renderError($e->getCode(), $e->getMessage());
+} catch(\Exception $e) {
+    $content = \Library\Controller::renderError($e->getCode(), $e->getMessage());
 }
 
 echo $content;

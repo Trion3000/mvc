@@ -1,5 +1,15 @@
 <?php
 
+namespace Controller;
+
+use Library\Controller;
+use Library\Request;
+use Library\Router;
+use Library\Session;
+use Model\ContactForm;
+use Model\FeedbackModel;
+use Model\PageModel;
+
 class IndexController extends Controller
 {
     /**
@@ -29,7 +39,7 @@ class IndexController extends Controller
     public function contactAction(Request $request)
     {
         $form = new ContactForm($request);
-        $datetime = new DateTime();
+        $datetime = new \DateTime();
 
         if ($request->isPost()) {
             if ($form->isValid()) {

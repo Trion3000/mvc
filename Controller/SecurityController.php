@@ -1,11 +1,17 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PHP acedemy
- * Date: 24.03.2016
- * Time: 20:06
- */
+namespace Controller;
+
+
+use Library\Controller;
+use Library\Password;
+use Library\Request;
+use Library\Router;
+use Library\Session;
+use Model\LoginForm;
+use Model\RegistrationForm;
+use Model\UserModel;
+
 class SecurityController extends Controller
 {
     public function registerAction(Request $request)

@@ -1,6 +1,15 @@
 <?php
 
-class AdminBookController extends Controller
+namespace Controller\Admin;
+
+use Library\Controller;
+use Library\Request;
+use Library\Router;
+use Library\Session;
+use Model\BookForm;
+use Model\BookModel;
+
+class BookController extends Controller
 {
     /**
      * @param Request $request

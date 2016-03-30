@@ -1,11 +1,9 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: henry
- * Date: 28.03.16
- * Time: 21:13
- */
+namespace Model;
+
+use Library\Request;
+
 class BookForm
 {
     public $title;

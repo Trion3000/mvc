@@ -1,5 +1,12 @@
 <?php
 
+namespace Controller;
+
+use Library\Controller;
+use Library\MetaHelper;
+use Library\Request;
+use Model\BookModel;
+
 class BookController extends Controller
 {
     /**

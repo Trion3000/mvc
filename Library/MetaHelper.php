@@ -1,5 +1,7 @@
 <?php
 
+namespace Library;
+
 
 abstract class MetaHelper
 {
