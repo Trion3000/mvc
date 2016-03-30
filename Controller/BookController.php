@@ -4,6 +4,7 @@ namespace Controller;
 
 use Library\Controller;
 use Library\MetaHelper;
+use Library\NotFoundException;
 use Library\Request;
 use Model\BookModel;
 

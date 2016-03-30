@@ -53,4 +53,9 @@ class UploadedFile
         return strpos($this->type, 'image') === 0;
     }
 
+    public function isJpeg()
+    {
+        return $this->type == 'image/jpeg';
+    }
+
 }

@@ -25,9 +25,13 @@
     border:1px solid black;
     float:left;
     width: 230px;
-    height:200px;
+    height:230px;
     margin:20px;
     padding:10px;
+}
+
+.book-item img {
+    height: 150px;
 }
 
 .books {

@@ -3,9 +3,11 @@
 namespace Controller\Admin;
 
 use Library\Controller;
+use Library\NotFoundException;
 use Library\Request;
 use Library\Router;
 use Library\Session;
+use Library\UploadedFile;
 use Model\BookForm;
 use Model\BookModel;
 
@@ -29,7 +31,7 @@ class BookController extends Controller
     /**
      * @param Request $request
      * @return string
-     * @throws Exception
+     * @throws \Exception
      * @throws NotFoundException
      */
     public function editAction(Request $request)
@@ -40,8 +42,10 @@ class BookController extends Controller
 
         $id = $request->get('id');
         $book = $model->findById($id);
+        $image = $model->imageExists($id) ? $id . '.jpg' : false;
 
         if ($request->isPost()) {
+            $uploadedFile = new UploadedFile($request, 'image');
             if ($form->isValid()) {
                 $model->save(array(
                     'id' => $id,
@@ -50,6 +54,14 @@ class BookController extends Controller
                     'price' => $form->price,
                     'status' => $form->status
                 ));
+
+                // TODO: flash messages
+                if ($uploadedFile->uploadIsSuccessful()) {
+                    // TODO: +png ?
+                    if ($uploadedFile->isJpeg()) {
+                        $uploadedFile->move(UPLOAD_DIR . $id . '.jpg');
+                    }
+                }
 
                 Session::setFlash('Saved');
                 Router::redirect('/admin/books/edit/' . $id);
@@ -61,7 +73,7 @@ class BookController extends Controller
             $form->setFromArray($book);
         }
 
-        $args = compact('book', 'form');
+        $args = compact('book', 'form', 'image');
         return $this->render('edit', $args);
     }
 

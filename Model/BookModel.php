@@ -7,6 +7,8 @@ use Library\NotFoundException;
 
 class BookModel
 {
+    const DEFAULT_IMAGE = '/img/default_book_image.jpg';
+
     public function findById($id)
     {
         $db = DbConnection::getInstance()->getPdo();
@@ -39,7 +41,13 @@ class BookModel
         $sth = $db->query($sql);
         $sth->execute();
 
-        $data = $sth->fetchAll(\PDO::FETCH_ASSOC);
+        $data = array();
+
+        while ($book = $sth->fetch(\PDO::FETCH_ASSOC)) {
+            $id = $book['id'];
+            $book['image'] = $this->imageExists($id) ? "/uploads/{$id}.jpg" : self::DEFAULT_IMAGE;
+            $data[] = $book;
+        }
 
         if (!$data) {
             throw new NotFoundException('Books not found');
@@ -78,6 +86,12 @@ class BookModel
         $sth = $db->prepare('UPDATE book SET title = :title, description = :description, price = :price, status = :status where id = :id');
         $sth->execute($book);
     }
+
+    public function imageExists($id)
+    {
+        return file_exists(UPLOAD_DIR . $id . '.jpg');
+    }
+
 }
 
 
