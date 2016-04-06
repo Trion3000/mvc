@@ -1,40 +1,45 @@
-* {
-    font-family: Arial;
+.alert:empty {
+    display: none;
 }
 
-.container {
-    width: 1200px;
-    margin: 0 auto;
-}
 
-.footer {
-    border-top:1px solid black;
-    padding:10px;
-}
+/** {*/
+    /*font-family: Arial;*/
+/*}*/
 
-.menu {
-    border-bottom: 1px solid black;
-    padding:10px;
-}
+/*.container {*/
+    /*width: 1200px;*/
+    /*margin: 0 auto;*/
+/*}*/
 
-.menu a {
-    margin: 0 10px 0 0;
-}
+/*.footer {*/
+    /*border-top:1px solid black;*/
+    /*padding:10px;*/
+/*}*/
 
-.book-item {
-    border:1px solid black;
-    float:left;
-    width: 230px;
-    height:230px;
-    margin:20px;
-    padding:10px;
-}
+/*.menu {*/
+    /*border-bottom: 1px solid black;*/
+    /*padding:10px;*/
+/*}*/
 
-.book-item img {
-    height: 150px;
-}
+/*.menu a {*/
+    /*margin: 0 10px 0 0;*/
+/*}*/
 
-.books {
-    overflow: hidden;
-}
+/*.book-item {*/
+    /*border:1px solid black;*/
+    /*float:left;*/
+    /*width: 230px;*/
+    /*height:230px;*/
+    /*margin:20px;*/
+    /*padding:10px;*/
+/*}*/
+
+/*.book-item img {*/
+    /*height: 150px;*/
+/*}*/
+
+/*.books {*/
+    /*overflow: hidden;*/
+/*}*/
 

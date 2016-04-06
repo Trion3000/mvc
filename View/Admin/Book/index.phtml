@@ -1,27 +1,32 @@
 <h1>Books table</h1>
 
-<table border="1" cellspacing="0" cellpadding="10">
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Active</th>
-        <th>Actions</th>
-    </tr>
+<div class="alert alert-info"><?=\Library\Session::getFlash()?></div>
 
-    <?php foreach ($books as $book) : ?>
+<div class="table-responsive">
+    <table class="table" >
         <tr>
-            <td><?=$book['id']?></td>
-            <td><?=$book['title']?></td>
-            <td><?=$book['price']?></td>
-            <td><?=$book['status']?></td>
-            <td>
-                <a href="/admin/books/edit/<?=$book['id']?>">Edit</a>
-                <a href="/admin/books/remove/<?=$book['id']?>">Remove</a>
-            </td>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Active</th>
+            <th>Actions</th>
         </tr>
-    <?php endforeach; ?>
 
-</table>
+        <?php foreach ($books as $book) : ?>
+            <tr>
+                <td><?=$book['id']?></td>
+                <td><?=$book['title']?></td>
+                <td><?=$book['price']?></td>
+                <td><?=$book['status']?></td>
+                <td>
+                    <a href="/admin/books/edit/<?=$book['id']?>" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a href="/admin/books/remove/<?=$book['id']?>" title="Remove" onclick="return confirm('Are you sure?')"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+
+    </table>
+</div>
+
 
 

@@ -9,6 +9,17 @@ class BookModel
 {
     const DEFAULT_IMAGE = '/img/default_book_image.jpg';
 
+    public function removeById($id)
+    {
+        $db = DbConnection::getInstance()->getPdo();
+        $sth = $db->prepare('DELETE FROM book WHERE id = :book_id');
+        $params = array(
+            'book_id' => $id
+        );
+        $sth->execute($params);
+    }
+
+
     public function findById($id)
     {
         $db = DbConnection::getInstance()->getPdo();

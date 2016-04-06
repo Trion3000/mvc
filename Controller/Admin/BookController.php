@@ -19,12 +19,33 @@ class BookController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if (!Session::has('user')) {
+            Router::redirect('/login');
+        }
+
         $model = new BookModel();
         $books = $model->findAll(false);
 
         $args = compact('books');
 
         return $this->render('index', $args);
+    }
+
+    public function removeAction(Request $request)
+    {
+        if (!Session::has('user')) {
+            Router::redirect('/login');
+        }
+
+        $id = $request->get('id');
+        $model = new BookModel();
+
+        // todo: check if book exists?
+
+        $model->removeById($id);
+
+        Session::setFlash("Book #{$id} deleted");
+        Router::redirect('/admin/books');
     }
 
 
@@ -36,6 +57,10 @@ class BookController extends Controller
      */
     public function editAction(Request $request)
     {
+        if (!Session::has('user')) {
+            Router::redirect('/login');
+        }
+
         $model = new BookModel();
         $form = new BookForm($request);
         // TODO: $styleModel = new StyleModel(); => взять список категорий, передать в шаблон, сформировать <select>
