@@ -17,6 +17,7 @@ return  array(
     'logout' => new Route('/logout', 'Security', 'logout'),
     'register' => new Route('/register', 'Security', 'register'),
     'api_books_list' => new Route('/api/books', 'Book', 'apiBooksList'),
+    'ajax_test' => new Route('/ajax_test', 'Index', 'ajax'),
 
     // admin
     'admin_default' => new Route('/admin', 'Admin\\Index', 'index'),

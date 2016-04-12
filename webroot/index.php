@@ -9,23 +9,27 @@ define('MODEL_DIR', ROOT . 'Model' . DS);
 define('DATA_DIR', ROOT . '_data' . DS);
 define('CONF_DIR', ROOT . 'Config' . DS);
 define('UPLOAD_DIR', ROOT . 'webroot' . DS . 'uploads' . DS);
+define('VENDOR_DIR', ROOT . 'vendor' . DS);
 
 
 
-/**
- * @param $className
- * @throws Exception
- */
-function __autoload($className)
-{
-    $file = ROOT . str_replace('\\', DS, "{$className}.php");
 
-    if (!file_exists($file)) {
-        throw new \Exception("{$file} not found", 404);
-    }
+///**
+// * @param $className
+// * @throws Exception
+// */
+//function __autoload($className)
+//{
+//    $file = ROOT . str_replace('\\', DS, "{$className}.php");
+//
+//    if (!file_exists($file)) {
+//        throw new \Exception("{$file} not found", 404);
+//    }
+//
+//    require_once $file;
+//}
 
-    require_once $file;
-}
+include VENDOR_DIR . 'autoload.php';
 
 try {
     \Library\Session::start();

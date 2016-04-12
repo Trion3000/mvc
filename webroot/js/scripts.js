@@ -11,3 +11,8 @@ function check() {
 
     return res;
 }
+
+
+$(document).ready(
+
+);

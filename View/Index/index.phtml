@@ -4,14 +4,16 @@
 
 <a href="http://google.com" id="test">Goooo</a>
 
-<button onclick="this.style.display = 'none'">Click</button>
-<script>
-    function my() {
-        var element = document.getElementById('test');
-       // alert(1);
-        element.href = '/contact-us';
-        element.style.backgroundColor = 'yellow';
-        console.log(element);
-    }
+<button>Click</button>
+<div id="ajax_test">
 
+</div>
+
+<script>
+    $('button').click(function() {
+        $.ajax('/ajax_test?a=2', {name: 'Andy', age: 25}, function(data) {
+            $('#ajax_test').append(data);
+
+        });
+    });
 </script>

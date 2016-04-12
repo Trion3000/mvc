@@ -1,5 +1,31 @@
 <h1>Books</h1>
 
+<script>
+    $(document).ready(function() {
+
+
+        $('button').on('click', function() {
+//            $(this).after('<b>hello</b>');
+
+//            $(this).prev().prev().prev().hide();
+
+//            var img = $(this).parent().find('img');
+//            img.slideToggle();
+
+//        if (img.css('display') == 'block') {
+//            img.slideUp();
+//            $(this).text('Show image');
+//        } else {
+//            img.slideDown();
+//            $(this).text('Hide image');
+//        }
+        });
+    });
+
+
+
+</script>
+
 <div class="row">
     <?php foreach ($books as $book) : ?>
         <div class="col-md-4 col-lg-2 col-sm-12">
@@ -7,8 +33,11 @@
             Price:  <?=$book['price']?><br>
             <img src="<?=$book['image']?>" alt="" class="img-responsive"><br>
             <a href="/book-<?=$book['id']?>.html">Details</a>
+            <button type="button">Hide image</button>
         </div>
     <?php endforeach; ?>
 </div>
+
+
 
 
